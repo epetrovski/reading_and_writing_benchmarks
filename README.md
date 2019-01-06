@@ -27,3 +27,8 @@ In single thread mode, fread is an average 3.7 times faster at reading
 and 5.5 times faster at writing. In multithread mode — which is the
 default — fread is 8.4 times faster at reading and 8.9 times faster at
 writing.
+
+## Graf of reading and writing benchmarks:
+
+Simply a visualisation of the benchmarkings in the table above.
+![](README_files/figure-gfm/graph-1.png)<!-- -->
