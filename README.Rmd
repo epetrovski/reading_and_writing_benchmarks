@@ -1,0 +1,18 @@
+---
+title: "README"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Reading and writing benchmarks
+
+Benchmarks of reading and writing csv files with data.table::fread() and data.table::fwrite() versus readr::read_csv() and readr::write_csv(). 
+
+Related to https://github.com/tidyverse/readr/issues/931.
+
+```{r pressure, echo=FALSE}
+readRDS("benchmarks.RDS")
+```

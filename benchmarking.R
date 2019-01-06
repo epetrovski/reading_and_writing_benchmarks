@@ -57,5 +57,15 @@ benchmark <- function(threads){
 benchmarks <- rbind(benchmark(0), benchmark(1L))
 
 # Calculate differences between fread and readr
-benchmarks[, `:=`(write_ratio = round(write_csv / fwrite, 1),
-                  read_ratio = round(read_csv / fread, 1))]
+benchmarks <- benchmarks[, `:=`(write_ratio = round(write_csv / fwrite, 1),
+                                read_ratio = round(read_csv / fread, 1))]
+
+# Save benchmarks
+saveRDS(benchmarks, "benchmarks.RDS")
+
+# Cleanup
+sapply(c("df.csv", "df_dt.csv", "df_rdr.csv"), file.remove)
+
+
+
+
