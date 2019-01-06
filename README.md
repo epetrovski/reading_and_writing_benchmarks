@@ -5,7 +5,9 @@ README
 
 Benchmarks of reading and writing csv files with `data.table::fread()`
 and `data.table::fwrite()` versus `readr::read_csv()` and
-`readr::write_csv()`.
+`readr::write_csv()`. Using `data.table` version 1.11.8 and `readr`
+version 1.3.1 with R version 3.5.1. Computer is a MacBook Pro (Retina,
+13-inch, Mid 2014), 2,8 GHz Intel Core i5, 256 GB SSD.
 
 Related to
     <https://github.com/tidyverse/readr/issues/931>.
@@ -24,10 +26,10 @@ Related to
     ##  9:       1     537    18.430    6.479  3.114 1.697         5.9        3.8
     ## 10:       1    1084    34.267   13.330  6.078 3.426         5.6        3.9
 
-In single thread mode, fread is an average 3.7 times faster at reading
-and 5.5 times faster at writing. In multithreaded mode — which is the
-default — fread is 8.4 times faster at reading and 8.9 times faster at
-writing.
+In single thread mode, data.table is an average 3.7 times faster at
+reading and 5.5 times faster at writing. In multithreaded mode — which
+is the default — data.table is 8.4 times faster at reading and 8.9 times
+faster at writing.
 
 ## Graph of reading and writing benchmarks:
 

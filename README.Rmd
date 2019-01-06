@@ -20,7 +20,7 @@ averages <- as.data.table(benchmarks)[,
 
 # Reading and writing benchmarks
 
-Benchmarks of reading and writing csv files with `data.table::fread()` and `data.table::fwrite()` versus `readr::read_csv()` and `readr::write_csv()`. 
+Benchmarks of reading and writing csv files with `data.table::fread()` and `data.table::fwrite()` versus `readr::read_csv()` and `readr::write_csv()`. Using `data.table` version `r packageVersion("data.table")` and `readr` version `r packageVersion("readr")` with R version `r paste0(R.Version()$major,".",R.Version()$minor)`. Computer is a MacBook Pro (Retina, 13-inch, Mid 2014), 2,8 GHz Intel Core i5, 256 GB SSD. 
 
 Related to https://github.com/tidyverse/readr/issues/931.
 
@@ -30,7 +30,7 @@ Related to https://github.com/tidyverse/readr/issues/931.
 benchmarks
 ```
 
-In single thread mode, fread is an average `r round(averages[threads == 1, reading], 1)` times faster at reading and `r round(averages[threads == 1, writing], 1)` times faster at writing. In multithreaded mode — which is the default — fread is `r round(averages[threads == 4, reading], 1)` times faster at reading and `r round(averages[threads == 4, writing], 1)` times faster at writing.
+In single thread mode, data.table is an average `r round(averages[threads == 1, reading], 1)` times faster at reading and `r round(averages[threads == 1, writing], 1)` times faster at writing. In multithreaded mode — which is the default — data.table is `r round(averages[threads == 4, reading], 1)` times faster at reading and `r round(averages[threads == 4, writing], 1)` times faster at writing.
 
 ## Graph of reading and writing benchmarks:
 
