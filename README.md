@@ -3,8 +3,9 @@ README
 
 # Reading and writing benchmarks
 
-Benchmarks of reading and writing csv files with data.table::fread() and
-data.table::fwrite() versus readr::read\_csv() and readr::write\_csv().
+Benchmarks of reading and writing csv files with `data.table::fread()`
+and `data.table::fwrite()` versus `readr::read_csv()` and
+`readr::write_csv()`.
 
 Related to
     <https://github.com/tidyverse/readr/issues/931>.
@@ -24,11 +25,11 @@ Related to
     ## 10:       1    1084    34.267   13.330  6.078 3.426         5.6        3.9
 
 In single thread mode, fread is an average 3.7 times faster at reading
-and 5.5 times faster at writing. In multithread mode — which is the
+and 5.5 times faster at writing. In multithreaded mode — which is the
 default — fread is 8.4 times faster at reading and 8.9 times faster at
 writing.
 
-## Graf of reading and writing benchmarks:
+## Graph of reading and writing benchmarks:
 
-Simply a visualisation of the benchmarkings in the table above.
+A visualization of the benchmarks in the table above.
 ![](README_files/figure-gfm/graph-1.png)<!-- -->

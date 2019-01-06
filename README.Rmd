@@ -20,7 +20,7 @@ averages <- as.data.table(benchmarks)[,
 
 # Reading and writing benchmarks
 
-Benchmarks of reading and writing csv files with data.table::fread() and data.table::fwrite() versus readr::read_csv() and readr::write_csv(). 
+Benchmarks of reading and writing csv files with `data.table::fread()` and `data.table::fwrite()` versus `readr::read_csv()` and `readr::write_csv()`. 
 
 Related to https://github.com/tidyverse/readr/issues/931.
 
@@ -30,11 +30,11 @@ Related to https://github.com/tidyverse/readr/issues/931.
 benchmarks
 ```
 
-In single thread mode, fread is an average `r round(averages[threads == 1, reading], 1)` times faster at reading and `r round(averages[threads == 1, writing], 1)` times faster at writing. In multithread mode — which is the default — fread is `r round(averages[threads == 4, reading], 1)` times faster at reading and `r round(averages[threads == 4, writing], 1)` times faster at writing.
+In single thread mode, fread is an average `r round(averages[threads == 1, reading], 1)` times faster at reading and `r round(averages[threads == 1, writing], 1)` times faster at writing. In multithreaded mode — which is the default — fread is `r round(averages[threads == 4, reading], 1)` times faster at reading and `r round(averages[threads == 4, writing], 1)` times faster at writing.
 
-## Graf of reading and writing benchmarks:
+## Graph of reading and writing benchmarks:
 
-Simply a visualisation of the benchmarkings in the table above.
+A visualization of the benchmarks in the table above.
 ```{r graph, echo=FALSE, dpi=300, fig.height=4}
 library("ggplot2")
 
