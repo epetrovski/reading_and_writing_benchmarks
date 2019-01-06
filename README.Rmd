@@ -7,12 +7,27 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r, echo=FALSE}
+library("data.table")
+
+benchmarks <- readRDS("benchmarks.RDS")
+
+averages <- as.data.table(benchmarks)[, 
+                                      .(reading = mean(read_ratio),
+                                        writing = mean(write_ratio)),
+                                      by = .(threads)]
+```
+
 # Reading and writing benchmarks
 
 Benchmarks of reading and writing csv files with data.table::fread() and data.table::fwrite() versus readr::read_csv() and readr::write_csv(). 
 
 Related to https://github.com/tidyverse/readr/issues/931.
 
-```{r pressure, echo=FALSE}
-readRDS("benchmarks.RDS")
+## Table of reading and writing benchmarks:
+
+```{r, echo=FALSE}
+benchmarks
 ```
+
+In single thread mode, fread is an average `r round(averages[threads == 1, reading], 1)` times faster at reading and `r round(averages[threads == 1, writing], 1)` times faster at writing. In multithread mode — which is the default — fread is `r round(averages[threads == 4, reading], 1)` times faster at reading and `r round(averages[threads == 4, writing], 1)` times faster at writing.
