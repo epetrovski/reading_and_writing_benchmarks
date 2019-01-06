@@ -14,7 +14,7 @@ make_data <- function(n){
 }
 
 # n rows of data to generate
-n_rows <- c(500000, 2000000, 5000000, 10000000, 20000000)
+n_rows <- c(500000, 2000000, 5000000, 10000000, 20000000, 40000000)
 
 # vectors for storing results
 size_MB <- fwrite <- write_csv <- fread <- read_csv <- threads <- c()
@@ -65,7 +65,3 @@ saveRDS(benchmarks, "benchmarks.RDS")
 
 # Cleanup
 sapply(c("df.csv", "df_dt.csv", "df_rdr.csv"), file.remove)
-
-
-
-

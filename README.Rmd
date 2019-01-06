@@ -40,14 +40,9 @@ library("ggplot2")
 
 benchmarks_plot <- melt(benchmarks,  
                         id.vars = c("threads", "size_MB"),
-                        measure.vars = c("fwrite", "fread", "write_csv", "read_csv"),
-                        variable.name = "package",
+                        measure.vars = c("write_csv", "read_csv", "fwrite", "fread"),
+                        variable.name = "func",
                         value.name = "time")
-
-benchmarks_plot[package == "write_csv", package := "readr writing"]
-benchmarks_plot[package == "read_csv", package := "readr reading"]
-benchmarks_plot[package == "fwrite", package := "data.table writing"]
-benchmarks_plot[package == "fread", package := "data.table reading"]
 
 
 benchmarks_plot[, threads := ifelse(threads == 1, paste0(threads, " thread"), "4 threads")]
@@ -56,15 +51,16 @@ benchmarks_plot[, threads := ifelse(threads == 1, paste0(threads, " thread"), "4
 ggplot(data = benchmarks_plot, 
        aes(x = size_MB, 
            y = time, 
-           colour = package)) +
+           colour = func)) +
   facet_grid(. ~ threads) +
   geom_line() +
-  scale_color_manual(values = c("readr reading" = "light blue",
-                                "readr writing" = "dark blue",
-                                "data.table reading" = "yellow",
-                                "data.table writing" = "orange")) +
+  scale_color_manual(values = c("read_csv" = "light blue",
+                                "write_csv" = "dark blue",
+                                "fread" = "yellow",
+                                "fwrite" = "orange")) +
   labs(x = "Data size in MB",
        y = "Time in seconds") +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom",
+        legend.title = element_blank())
 
 ```
